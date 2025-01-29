@@ -1,7 +1,7 @@
 import { greet, sayGoodBye } from "./greet";
 
 jest.mock("./greet", () => ({
-  ...jest.requireActual("./greet"),
+  ...jest.requireActual("./greet"), // 일부를 대체할 수 있다
   sayGoodBye: (name: string) => `Good bye, ${name}.`,
 }));
 

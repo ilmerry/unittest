@@ -1,3 +1,4 @@
+// 아침, 점심, 저녁마다 다른 인사말을 반환하는 함수
 export function greetByTime() {
   const hour = new Date().getHours();
   if (hour < 12) {

@@ -13,6 +13,7 @@ function mockPostMyArticle(input: ArticleInput, status = 200) {
       .mockRejectedValueOnce(httpError);
   }
   try {
+    // 유효성 검사 실시
     checkLength(input.title);
     checkLength(input.body);
     return jest
@@ -25,12 +26,13 @@ function mockPostMyArticle(input: ArticleInput, status = 200) {
   }
 }
 
+// 기본적으로 유효성 검사에 통과하는 객체를 반환하고
 function inputFactory(input?: Partial<ArticleInput>) {
   return {
     tags: ["testing"],
     title: "타입스크립트를 사용한 테스트 작성법",
     body: "테스트 작성 시 타입스크립트를 사용하면 테스트의 유지 보수가 쉬워진다",
-    ...input,
+    ...input, // 필요에 따라 인수를 넘겨서 유효성 검사를 통과하지 못하는 객체를 반환
   };
 }
 
@@ -39,6 +41,10 @@ test("유효성 검사에 성공하면 성공 응답을 반환한다", async () 
   const input = inputFactory();
   // 입력값을 포함한 성공 응답을 반환하는 목 객체를 만든다.
   const mock = mockPostMyArticle(input);
+  /*
+   * const mock = mockPostMyArticle(이상한 input, 500);
+   * 유효성 검사를 통과하지 못했거나, input이 다르거나, status가 200대가 아닌 경우 테스트는 실패한다.
+   */
   // input을 인수로 테스트할 함수를 실행한다.
   const data = await postMyArticle(input);
   // 취득한 데이터에 입력 내용이 포함됐는지 검증한다.

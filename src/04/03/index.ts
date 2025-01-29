@@ -1,6 +1,6 @@
 import { getMyProfile } from "../fetchers";
 
-/* 코드 4-7 fetchers 폴더에 나뉘어 있지만 편의를 위해 여기서도 주석으로 제공합니다
+// 코드 4-7 fetchers 폴더에 나뉘어 있지만 편의를 위해 여기서도 주석으로 제공합니다
 export type Profile = {
   id: string;
   name?: string;
@@ -8,7 +8,8 @@ export type Profile = {
   email: string;
 };
 
-export function getMyProfile(): Promise<Profile> {
+// index.ts 안에 getMyProfile이 같이 있으면 안됨
+export function getMyProfileWithFail(): Promise<Profile> {
   return fetch("https://myapi.testing.com/my/profile").then(async (res) => {
     const data = await res.json();
     if (!res.ok) {
@@ -17,7 +18,6 @@ export function getMyProfile(): Promise<Profile> {
     return data;
   });
 }
-*/
 
 /* 코드 4-8
 export async function getGreet() {

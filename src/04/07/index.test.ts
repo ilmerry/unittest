@@ -35,15 +35,15 @@ describe("설정 및 파기 타이밍", () => {
 
 describe("greetByTime(", () => {
   beforeEach(() => {
-    jest.useFakeTimers();
+    jest.useFakeTimers(); // 가짜 타이머를 사용하도록 지시
   });
 
   afterEach(() => {
-    jest.useRealTimers();
+    jest.useRealTimers(); // 실제 타이머를 사용하도록 원상 복구
   });
 
   test("아침에는 '좋은 아침입니다'를 반환한다", () => {
-    jest.setSystemTime(new Date(2023, 4, 23, 8, 0, 0));
+    jest.setSystemTime(new Date(2023, 4, 23, 8, 0, 0)); // 가짜 타이머에 시각 설정
     expect(greetByTime()).toBe("좋은 아침입니다");
   });
 

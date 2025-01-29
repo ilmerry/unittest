@@ -2,7 +2,7 @@ import { greet } from "./greet";
 
 test("목 함수가 실행됐다", () => {
   const mockFn = jest.fn();
-  mockFn();
+  mockFn(); // 한번 호출됨
   expect(mockFn).toBeCalled();
 });
 
@@ -39,6 +39,6 @@ test("목 함수는 실행 시 인수를 기록한다", () => {
 
 test("목 함수를 테스트 대상의 인수로 사용할 수 있다", () => {
   const mockFn = jest.fn();
-  greet("Jiro", mockFn);
+  greet("Jiro", mockFn); // 콜백 검증 가능
   expect(mockFn).toHaveBeenCalledWith("Hello! Jiro");
 });

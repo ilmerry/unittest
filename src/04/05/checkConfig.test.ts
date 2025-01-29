@@ -14,6 +14,7 @@ test("expect.objectContaining를 사용한 부분 검증", () => {
   checkConfig(mockFn);
   expect(mockFn).toHaveBeenCalledWith(
     expect.objectContaining({
+      // 객체 일부만 검증
       feature: { spy: true },
     })
   );
